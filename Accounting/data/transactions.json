@@ -1,0 +1,9 @@
+[
+    {
+        "date": "2025-06-04",
+        "type": "income",
+        "catagory": "freelance",
+        "description": "First test deposit",
+        "amount": 100.0
+    }
+]
