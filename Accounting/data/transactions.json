@@ -5,5 +5,33 @@
         "catagory": "freelance",
         "description": "First test deposit",
         "amount": 100.0
+    },
+    {
+        "date": "2025-06-05",
+        "type": "income",
+        "catagory": "invoice 200",
+        "description": "Tool Creation",
+        "amount": 500.0
+    },
+    {
+        "date": "2025-06-05",
+        "type": "expense",
+        "catagory": "expenses",
+        "description": "hosting",
+        "amount": 50.0
+    },
+    {
+        "date": "2025-06-05",
+        "type": "expense",
+        "catagory": "utiity",
+        "description": "internet",
+        "amount": 70.0
+    },
+    {
+        "date": "2025-06-05",
+        "type": "income",
+        "catagory": "contract",
+        "description": "Tool maintainence",
+        "amount": 300.0
     }
 ]
