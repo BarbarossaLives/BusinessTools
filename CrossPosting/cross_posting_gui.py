@@ -23,10 +23,17 @@ class CrossPostApp:
             justify="center"
         )
 
+        style = ttk.Style()
         style.configure(
             "normal.TLabel",
-            font=("Georgia", 14),
+            font=("Georgia", 14)
             
+        )
+
+        style = ttk.Style()
+        style.configure(
+            "suc cess.TButton",
+            font=("Georgia", 24, "bold")
         )
 
         root.grid_columnconfigure(0,minsize=150)
@@ -77,25 +84,45 @@ class CrossPostApp:
         comments_entry = ttk.Entry(self.root, bootstyle="primary")
         comments_entry.grid(row=4,column=0, columnspan=2,pady=5)
 
-        image_import_buttom = ttk.Button(self.root, text="Upload Image")
+        image_import_buttom = ttk.Button(self.root, text="Upload Image", bootstyle="primary")
         image_import_buttom.grid(row=5,column=0,columnspan=2,pady=5)
-        image_uploaded_label = ttk.Label(self.root, text="image source")
+        image_uploaded_label = ttk.Label(self.root, text="image source", style="normal.TLabel")
         image_uploaded_label.grid(row=6, column=0, columnspan=2, pady=5)
 
         blank_1 = ttk.Frame(self.root, height=50).grid(row=7,column=0,columnspan=4)
 
-        mastodon_url_label = ttk.Label(self.root, text="Mastodon URL")
+        mastodon_url_label = ttk.Label(self.root, text="Mastodon URL",style="normal.TLabel")
         mastodon_url_label.grid(row=8, column=0,pady=5)
         mastodon_url_entry = ttk.Entry(self.root,bootstyle="primary")
         mastodon_url_entry.grid(row=8, column=1,pady=5)
-        mastodon_token_label = ttk.Label(self.root, text="Mastodon Token")
+        mastodon_token_label = ttk.Label(self.root, text="Mastodon Token",style="normal.TLabel")
         mastodon_token_label.grid(row=9, column=0,pady=5)
         mastodon_token_entry = ttk.Entry(self.root,bootstyle="primary")
         mastodon_token_entry.grid(row=9, column=1,pady=5)
 
-        devto_key_label = ttk.Label(self.root, text="Dev,to Key")
-        devto_key_label.grid(row=9, column=0,pady=5)
+        devto_key_label = ttk.Label(self.root, text="Dev,to Key",style="normal.TLabel")
+        devto_key_label.grid(row=10, column=0,pady=5)
+        devto_key_entry = ttk.Entry(self.root, bootstyle = "primary")
+        devto_key_entry.grid(row=10,column=1,pady=5)
 
+        linkedin_token_label = ttk.Label(self.root, text="LinkedIn token:",style="normal.TLabel")
+        linkedin_token_label.grid(row=11, column=0,pady=5)
+        linkedin_token_entry = ttk.Entry(self.root,bootstyle="primary")
+        linkedin_token_entry.grid(row=11,column=1,pady=5)
+
+        x_token_label = ttk.Label(self.root, text="X Token:",style="normal.TLabel")
+        x_token_label.grid(row=12, column=0,pady=5)
+        x_token_entry = ttk.Entry(self.root,bootstyle="primary")
+        x_token_entry.grid(row=12, column=1,pady=5)
+
+        load_configuration_buttom = ttk.Button(self.root, text= "Load Config", bootstyle="primary")
+        load_configuration_buttom.grid(row=8, column=2, columnspan=2)
+
+        save_configuration_button = ttk.Button(self.root, text="Save Config", bootstyle="primary")
+        save_configuration_button.grid(row=10, column=2, columnspan=2)
+
+        post_button = ttk.Button(self.root, text="POST", style="success.TButton")
+        post_button.grid(row=12, column=2, columnspan=2)
 
 if __name__ == "__main__":
     root = ttk.Window(themename="cyborg")
