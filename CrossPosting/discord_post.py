@@ -1,23 +1,35 @@
+# poster.py
 import requests
+import os
 
-def post_to_discord(webhook_url, message, image_path=None):
-    """
-    Post a message (and optional image) to a Discord channel using a webhook URL.
-    """
-    data = {"content": message}
-    files = {}
+def post_to_discord(kofi_url, comment, webhooks, image_path=None):
+    print("got to post to discord function")
+    if not kofi_url:
+        print("No Ko-fi URL provided. Aborting.")
+        return
 
-    if image_path:
-        try:
-            files["file"] = open(image_path, "rb")
-        except Exception as e:
-            return f"⚠️ Error opening image: {e}"
+    message = f"Check out my latest post on Ko-fi!\n{kofi_url}"
+    print(message)
 
-    try:
-        response = requests.post(webhook_url, data=data, files=files if files else None)
-        if response.status_code == 204:
-            return "✅ Posted successfully."
-        else:
-            return f"❌ Discord error: {response.status_code} - {response.text}"
-    except Exception as e:
-        return f"❌ Request failed: {e}"
+
+    if comment:
+        message += f"\n\n{comment}"
+        print("Updated Message: " + message)
+
+    for url in webhooks:
+        if url.strip():
+            data = {"content": message}
+            files = None
+
+            if image_path:
+                try:
+                    with open(image_path, 'rb') as f:
+                        files = {"file": (os.path.basename(image_path), f)}
+                        response = requests.post(url, data=data, files=files)
+                except Exception as e:
+                    print(f"Failed to upload image to Discord: {e}")
+            else:
+                try:
+                    response = requests.post(url, data=data)
+                except Exception as e:
+                    print(f"Failed to post message to Discord: {e}")
