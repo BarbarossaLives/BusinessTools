@@ -50,7 +50,7 @@ class CrossPostApp:
 
         share_on_linkedin(kofi_url, comment)
 
-    CONFIG_FILE = "crosspost_cofig,json" 
+    CONFIG_FILE = "crosspost_config.json"
 
     def load_configuration(self):
         config = load_config()
